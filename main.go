@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-web-app/db"
 	"html/template"
 	"net/http"
 
@@ -16,6 +17,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	db.Iniciar_conexion()
+
 	enrutador := mux.NewRouter()
 	enrutador.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	enrutador.HandleFunc("/", Index)
