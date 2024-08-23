@@ -1,14 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("HOLA MUNDO")
+	t, err := template.ParseFiles("templates/index.html")
+	if err != nil {
+		panic(err)
+	}
+	t.Execute(w, nil)
 }
 
 func main() {
