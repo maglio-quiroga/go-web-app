@@ -12,8 +12,8 @@ func LogAdmin(w http.ResponseWriter, r *http.Request) {
 	modelos.DefaultAdminServ.AutenticarAdmin(w, usuario)
 }
 
-func ObtenerUsuario(r *http.Request) modelos.Adm {
-	var usuario modelos.Adm
+func ObtenerUsuario(r *http.Request) modelos.Admin {
+	var usuario modelos.Admin
 	err := json.NewDecoder(r.Body).Decode(&usuario)
 	if err != nil {
 		log.Println("Error al decodificar JSON:", err)

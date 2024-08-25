@@ -11,36 +11,24 @@ import (
 
 type Admin struct {
 	gorm.Model
-	Nombre string `gorm:"not null"`
-	Email  string `gorm:"not null;unique"`
-	Clave  string `gorm:"not null"`
-}
-
-type Adm struct {
-	Nombre string `json:"nombre"`
-	Email  string `json:"email"`
-	Clave  string `json:"clave"`
-}
-
-type AuthAdmin struct {
-	Nombre    string
-	Email     string
-	ClaveHash string
+	Nombre string `gorm:"not null" json:"nombre"`
+	Email  string `gorm:"not null;unique" json:"email"`
+	Clave  string `gorm:"not null" json:"clave"`
 }
 
 var DefaultAdminServ ServAdmin
 
 type ServAdmin struct{}
 
-func (ServAdmin) AutenticarAdmin(w http.ResponseWriter, admin Adm) {
-	var authAdmin AuthAdmin
+func (ServAdmin) AutenticarAdmin(w http.ResponseWriter, admin Admin) {
+	var authAdmin Admin
 	result := db.Database.Where("email = ?", admin.Email).First(&authAdmin)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		http.Error(w, "Usuario no encontrado", http.StatusNotFound)
 		return
 	}
 
-	err := bcrypt.CompareHashAndPassword([]byte(authAdmin.ClaveHash), []byte(admin.Clave))
+	err := bcrypt.CompareHashAndPassword([]byte(authAdmin.Clave), []byte(admin.Clave))
 	if err != nil {
 		http.Error(w, "Clave incorrecta", http.StatusUnauthorized)
 		return
