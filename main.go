@@ -3,18 +3,29 @@ package main
 import (
 	"go-web-app/db"
 	"go-web-app/modelos"
-	"html/template"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("templates/index.html")
-	if err != nil {
-		panic(err)
+func ManejadorRutas(w http.ResponseWriter, r *http.Request) {
+	switch r.URL.Path {
+	case "/":
+		//enviar json para el index.html
+	case "/alumnos":
+		//enviar json para la pagina del listado de alumnos
+	case "/empleos":
+		//enviar json para la pagina del listado de empleos
+	case "/adm-peticiones":
+		//enviar json para la pagina de administrador de las peticiones
+	case "adm-alumnos":
+		//
+	case "adm-eventos":
+		//
+	case "adm-empleos":
+		//
 	}
-	t.Execute(w, nil)
+	//Los Json seran recuperados en el cliente con fetch + async await.
 }
 
 func main() {
@@ -27,7 +38,6 @@ func main() {
 	db.Database.AutoMigrate(modelos.Peticion{})
 
 	enrutador := mux.NewRouter()
-	enrutador.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
-	enrutador.HandleFunc("/", Index)
+	enrutador.HandleFunc("/", ManejadorRutas)
 	http.ListenAndServe(":3000", enrutador)
 }
