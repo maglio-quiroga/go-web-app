@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-web-app/controladores"
 	"go-web-app/db"
 	"go-web-app/modelos"
 	"net/http"
@@ -24,6 +25,8 @@ func ManejadorRutas(w http.ResponseWriter, r *http.Request) {
 		//
 	case "adm-empleos":
 		//
+	case "form-log":
+		controladores.LogAdmin(w, r)
 	}
 	//Los Json seran recuperados en el cliente con fetch + async await.
 }
