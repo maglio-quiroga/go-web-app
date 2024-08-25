@@ -3,6 +3,7 @@ package modelos
 import (
 	"errors"
 	"go-web-app/db"
+	"net/http"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
@@ -16,9 +17,9 @@ type Admin struct {
 }
 
 type Adm struct {
-	Nombre string
-	Email  string
-	Clave  string
+	Nombre string `json:"nombre"`
+	Email  string `json:"email"`
+	Clave  string `json:"clave"`
 }
 
 type AuthAdmin struct {
@@ -31,17 +32,22 @@ var DefaultAdminServ ServAdmin
 
 type ServAdmin struct{}
 
-func (ServAdmin) AutenticarAdmin(admin Adm) error {
+func (ServAdmin) AutenticarAdmin(w http.ResponseWriter, admin Adm) {
 	var authAdmin AuthAdmin
 	result := db.Database.Where("email = ?", admin.Email).First(&authAdmin)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-		return errors.New("Usuario no encontrado")
+		http.Error(w, "Usuario no encontrado", http.StatusNotFound)
+		return
 	}
+
 	err := bcrypt.CompareHashAndPassword([]byte(authAdmin.ClaveHash), []byte(admin.Clave))
 	if err != nil {
-		return errors.New("Clave incorrecta")
+		http.Error(w, "Clave incorrecta", http.StatusUnauthorized)
+		return
 	}
-	return nil
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Autenticación exitosa"))
 }
 
 func HashClaveAdm(clave string) (string, error) {

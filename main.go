@@ -19,13 +19,13 @@ func ManejadorRutas(w http.ResponseWriter, r *http.Request) {
 		//enviar json para la pagina del listado de empleos
 	case "/adm-peticiones":
 		//enviar json para la pagina de administrador de las peticiones
-	case "adm-alumnos":
+	case "/adm-alumnos":
 		//
-	case "adm-eventos":
+	case "/adm-eventos":
 		//
-	case "adm-empleos":
+	case "/adm-empleos":
 		//
-	case "form-log":
+	case "/form-log":
 		controladores.LogAdmin(w, r)
 	}
 	//Los Json seran recuperados en el cliente con fetch + async await.
