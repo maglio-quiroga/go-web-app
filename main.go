@@ -19,6 +19,8 @@ func main() {
 	db.Database.AutoMigrate(modelos.Peticion{})
 
 	enrutador := mux.NewRouter()
+	enrutador.HandleFunc("/", controladores.InicioGet).Methods("GET")
+	enrutador.HandleFunc("/", controladores.InicioPost).Methods("POST")
 	enrutador.HandleFunc("/log", controladores.LogAdmin).Methods("POST")
 	http.ListenAndServe(":3000", enrutador)
 }
