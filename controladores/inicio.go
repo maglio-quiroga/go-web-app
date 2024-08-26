@@ -22,7 +22,7 @@ func InicioGet(w http.ResponseWriter, r *http.Request) {
 		defer wg.Done()
 	}()
 	go func() {
-		db.Database.Find(&empleos)
+		db.Database.Limit(4).Find(&empleos)
 		defer wg.Done()
 	}()
 	go func() {
