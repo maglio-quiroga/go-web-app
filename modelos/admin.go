@@ -3,7 +3,9 @@ package modelos
 import (
 	"errors"
 	"go-web-app/db"
+	"go-web-app/herramientas"
 	"net/http"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
@@ -33,6 +35,19 @@ func (ServAdmin) AutenticarAdmin(w http.ResponseWriter, admin Admin) {
 		http.Error(w, "Clave incorrecta", http.StatusUnauthorized)
 		return
 	}
+	token, err2 := herramientas.GenerarToken(32)
+	if err2 != nil {
+		http.Error(w, "Hubo un error al generar el token", http.StatusInternalServerError)
+		return
+	}
+	expiracionToken := time.Now().Add(2 * time.Hour)
+	cookie := http.Cookie{
+		Name:    "token",
+		Value:   token,
+		Expires: expiracionToken,
+		Path:    "/",
+	}
+	http.SetCookie(w, &cookie)
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Autenticación exitosa"))
