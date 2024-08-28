@@ -29,5 +29,5 @@ func main() {
 	enrutador.HandleFunc("/log", controladores.LogAdmin).Methods("POST")
 	enrutador.HandleFunc("/alumnos", controladores.AlumnosGet).Methods("GET")
 
-	http.ListenAndServe(":3000", enrutador)
+	http.ListenAndServe(":8080", enrutador)
 }

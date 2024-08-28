@@ -1,0 +1,36 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: #364c59;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo {
+    font-size: 32px;
+    color: #fafafa;
+}
+.navbar a {
+    font-size: 20px;
+    position: relative;
+    font-weight: 500;
+    color: #fafafa;
+    margin-left: 18px;
+}
+.navbar a::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fafafa;
+    top: 100%;
+    left: 0;
+    transition: .4s;
+}
+.navbar a:hover::before {
+    width: 100%;
+}
