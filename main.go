@@ -19,13 +19,15 @@ func main() {
 	db.Database.AutoMigrate(modelos.Peticion{})
 
 	enrutador := mux.NewRouter()
+	enrutador.PathPrefix("./aplicacion/").Handler(http.StripPrefix("/aplicacion/", http.FileServer(http.Dir("./aplicacion/"))))
 
 	enrutador.HandleFunc("/incio", controladores.InicioGet).Methods("GET")
 	enrutador.HandleFunc("/inicio", controladores.InicioPost).Methods("POST")
-	enrutador.HandleFunc("/alumnos", controladores.AlumnosGet).Methods("GET")
 	enrutador.HandleFunc("/empleos", controladores.EmpleosGet).Methods("GET")
+	enrutador.HandleFunc("/eventos", controladores.EventosGet).Methods("GET")
 
 	enrutador.HandleFunc("/log", controladores.LogAdmin).Methods("POST")
+	enrutador.HandleFunc("/alumnos", controladores.AlumnosGet).Methods("GET")
 
 	http.ListenAndServe(":3000", enrutador)
 }
