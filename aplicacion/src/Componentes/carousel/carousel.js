@@ -17,12 +17,10 @@ export const GaleriaImagenes = () => {
         },
     ]
     return (
-        <>
-            <ImageGallery
-                items={imagenes}
-                showPlayButton={false}
-                showThumbnails={false}
-            />
-        </>
+                <ImageGallery
+                    items={imagenes}
+                    showPlayButton={false}
+                    showThumbnails={false}
+                />
     )
 }
