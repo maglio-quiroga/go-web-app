@@ -17,10 +17,12 @@ export const GaleriaImagenes = () => {
         },
     ]
     return (
+            <div style={{marginTop : "86px"}}>
                 <ImageGallery
                     items={imagenes}
                     showPlayButton={false}
                     showThumbnails={false}
                 />
+            </div>
     )
 }
