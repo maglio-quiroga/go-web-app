@@ -12,3 +12,20 @@ body {
 a {
     text-decoration: none;
 }
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 850px) {
+    .card-container > * {
+        flex: 1 1 calc(33.33%); 
+    }
+}
+
+.card-container > :nth-child(3) {
+    flex: 1 1 100%; 
+}
