@@ -5,6 +5,7 @@ import {GaleriaImagenes} from './Componentes/carousel/carousel'
 import {Separador} from './Componentes/separador/separador'
 import {Tarjeta} from './Componentes/tarjetas/alumnos'
 import {Calendario} from './Componentes/calendario/calendario'
+import {Formulario} from './Componentes/formulario/form'
 import "./index.css"
 
 const root = ReactDom.createRoot(document.getElementById("root"))
@@ -27,5 +28,6 @@ root.render(
         <Separador
             nombre = "Formulario Ex-Alumnos"
         />
+        <Formulario></Formulario>
     </>
 )

@@ -1,0 +1,53 @@
+.form{
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    padding: 80px;
+    width: 100%;
+}
+.form input , select{
+    border-radius: 5px;
+    padding: 12px;
+}
+.form textarea{
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.container{
+    width: 98vw;
+}
+.file-input {
+    display: none;
+  }
+
+  .file-label {
+    display: inline-block;
+    padding: 8px 18px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    border: solid 1px black;
+    background: transparent;
+  }
+
+  .submit-button{
+    padding: 10px 20px;
+    border: solid 1px black;
+    background: transparent;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+  }
+
+  .file-label:hover {
+    background-color: #FFD100;
+    transition: .4s;
+  }
+
+  .submit-button:hover{
+    background-color: #364c59;
+    transition: .4s;
+    color: #fafafa;
+  }

@@ -26,6 +26,17 @@ a {
     }
 }
 
+@media (max-width: 550px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-container > * {
+        flex: 1 1 100%;
+    }
+}
+
 .card-container > :nth-child(3) {
     flex: 1 1 100%; 
 }
