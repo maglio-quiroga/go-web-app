@@ -1,17 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDom from 'react-dom/client'
+import {Navbar} from './Componentes/navbar/navbar'
+import {GaleriaImagenes} from './Componentes/carousel/carousel'
+import {Separador} from './Componentes/separador/separador'
+import {Tarjeta} from './Componentes/tarjetas/alumnos'
+import {Calendario} from './Componentes/calendario/calendario'
+import {Formulario} from './Componentes/formulario/form'
+import {Footer} from './Componentes/footer/footer'
+import "./index.css"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDom.createRoot(document.getElementById("root"))
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <>
+        <Navbar/>
+        <GaleriaImagenes/>
+        <Separador
+            nombre = "Egresados Mas Recientes"
+        />
+        <div className='card-container'>
+        <Tarjeta></Tarjeta>
+        <Tarjeta></Tarjeta>
+        <Tarjeta></Tarjeta>
+        </div>
+        <Separador
+            nombre = "Proximos Eventos"
+        />
+        <Calendario></Calendario>
+        <Separador
+            nombre = "Formulario Ex-Alumnos"
+        />
+        <Formulario></Formulario>
+        <div className='fot'>
+            <Footer></Footer>
+        </div>
+    </>
+)

@@ -1,0 +1,15 @@
+.separador{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.contenido{
+    background-color: #364c59;
+    color: #fafafa;
+    width: 100vw;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: center;
+    font-size: 26px;
+}
