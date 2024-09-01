@@ -23,14 +23,14 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 8px solid #c74385;
+    border: 8px solid #FFD100;
     box-shadow: 0 0 20px #00000033;
 }
 
 .card .card-header .profile-img:hover {
     width: 180px;
     height: 180px;
-    border: 8px solid #d885af;
+    border: 8px solid #f4cb14da;
     transition: .4s;
 }
 
@@ -38,13 +38,7 @@
     margin-top: 30px;
     font-size: 22px;
     font-weight: bold;
-    color: #c74385;
-}
-
-.card .card-body .name:hover {
-    margin-top: 30px;
-    font-size: 24px;
-    color: #d885af;
+    color: #FFD100;
 }
 
 .card .card-body .mail {
@@ -62,7 +56,7 @@
     font-size: 14px;
 }
 .card .card-footer {
-    background-color: #c74385;
+    background-color: #FFD100;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 20px 0 20px 0;
@@ -70,6 +64,7 @@
 
 .card .card-footer .count {
     font-size: 14px;
+    color: black;
 }
 @media screen and (max-width: 575px) {
     .card {

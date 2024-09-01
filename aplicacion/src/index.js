@@ -6,6 +6,7 @@ import {Separador} from './Componentes/separador/separador'
 import {Tarjeta} from './Componentes/tarjetas/alumnos'
 import {Calendario} from './Componentes/calendario/calendario'
 import {Formulario} from './Componentes/formulario/form'
+import {Footer} from './Componentes/footer/footer'
 import "./index.css"
 
 const root = ReactDom.createRoot(document.getElementById("root"))
@@ -29,5 +30,8 @@ root.render(
             nombre = "Formulario Ex-Alumnos"
         />
         <Formulario></Formulario>
+        <div className='fot'>
+            <Footer></Footer>
+        </div>
     </>
 )

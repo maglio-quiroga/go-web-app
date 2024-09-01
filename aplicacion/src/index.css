@@ -18,11 +18,23 @@ a {
     justify-content: center;
     align-items: center;
 }
+.fot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #364c59;
+    padding: 15px;
+}
 
 
 @media (max-width: 850px) {
     .card-container > * {
         flex: 1 1 calc(33.33%); 
+    }
+    .fot {
+        display: grid;
+        grid-template-columns: repeat(2 , 1fr);
+        align-items: stretch;
     }
 }
 
@@ -34,6 +46,15 @@ a {
 
     .card-container > * {
         flex: 1 1 100%;
+    }
+    .fot {
+        display: grid;
+        grid-template-columns: repeat(1 , 1fr);
+        align-items: stretch;
+    }
+    .fot img {
+        display: flex;
+        justify-content: start;
     }
 }
 

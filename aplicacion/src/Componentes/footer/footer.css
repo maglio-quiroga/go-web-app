@@ -1,0 +1,30 @@
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px;
+}
+.links h3 ,a{
+    color: #fafafa;
+}
+.links a:hover{
+    transition: .4s;
+    color: #FFD100;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px;
+}
+.contact h3{
+    color: #fafafa;
+}
+.contact  pre , p{
+    color: #ecececa9;
+}
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
