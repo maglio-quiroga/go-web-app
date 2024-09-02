@@ -9,6 +9,14 @@ import {Formulario} from './Componentes/formulario/form'
 import {Footer} from './Componentes/footer/footer'
 import "./index.css"
 
+const info = async () => {
+    const response = await fetch("http://localhost:8080/inicio")
+    const data = await response.json()
+    return data
+}
+
+info().then(data => console.log(data));
+
 const root = ReactDom.createRoot(document.getElementById("root"))
 root.render(
     <>
