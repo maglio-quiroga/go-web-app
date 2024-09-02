@@ -13,26 +13,20 @@ import (
 
 func InicioGet(w http.ResponseWriter, r *http.Request) {
 	var alumnos []modelos.Alumno
-	var empleos []modelos.Empleo
 	var eventos []modelos.Evento
 	var wg sync.WaitGroup
-	wg.Add(3)
+	wg.Add(2)
 	go func() {
 		db.Database.Order("egreso desc").Limit(3).Find(&alumnos)
-		defer wg.Done()
-	}()
-	go func() {
-		db.Database.Limit(4).Find(&empleos)
-		defer wg.Done()
+		wg.Done()
 	}()
 	go func() {
 		db.Database.Find(&eventos)
-		defer wg.Done()
+		wg.Done()
 	}()
 	wg.Wait()
 	resp := map[string]interface{}{
 		"Alumnos": alumnos,
-		"Empleos": empleos,
 		"Eventos": eventos,
 	}
 	w.Header().Set("Content-Type", "application/json")

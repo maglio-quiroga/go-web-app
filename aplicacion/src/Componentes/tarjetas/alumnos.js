@@ -1,20 +1,24 @@
 import React from "react";
 import './alumnos.css'
 
-export const Tarjeta = () => {
+export const Tarjetas = ({ alumnos }) => {
     return (
-        <div class="card">
-        <div class="card-header">
-            <img src="#" alt="Imagen Ex-Alumno" class="profile-img"></img>
-        </div>
-        <div class="card-body">
-            <p class="name">Nombre</p>
-            <a href="#" class="mail">Email</a>
-            <p class="job">Trabajo | Area</p>
-        </div>
-        <div class="card-footer">
-            <p class="count"><span>Egreso</span> Fecha | <span>Contacto</span> Numero</p>
-        </div>
-    </div>
+        <>
+            {alumnos.map((alumno, index) => (
+                <div key={index} className="card">
+                    <div className="card-header">
+                        <img src={alumno.Imagen || "#"} alt="Imagen Ex-Alumno" className="profile-img" />
+                    </div>
+                    <div className="card-body">
+                        <p className="name">{alumno.Nombre}</p>
+                        <a href={`mailto:${alumno.Email}`} className="mail">{alumno.Email}</a>
+                        <p className="job">{alumno.Trabajo} | {alumno.Area}</p>
+                    </div>
+                    <div className="card-footer">
+                        <p className="count"><span>Egreso:</span> {new Date(alumno.Egreso).toLocaleDateString()} | <span>Contacto:</span> {alumno.Contacto}</p>
+                    </div>
+                </div>
+            ))}
+        </>
     );
-}
+};
