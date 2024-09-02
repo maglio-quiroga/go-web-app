@@ -22,6 +22,19 @@ const App = () => {
         fetchData()
     }, [])
 
+    const [eventos , setEventos] = useState([])
+
+    useEffect(
+        () => {
+            const fetchData = async () => {
+                const response = await fetch("http://localhost:8080/inicio")
+                const data = await response.json()
+                setEventos(data.Eventos)
+            }
+            fetchData()
+        }, []
+    )
+
     return (
         <>
             <Navbar/>
@@ -31,7 +44,9 @@ const App = () => {
                 <Tarjetas alumnos={alumnos} />
             </div>
             <Separador nombre="Proximos Eventos" />
-            <Calendario/>
+            <Calendario
+                eventos={eventos}
+            />
             <Separador nombre="Formulario Ex-Alumnos" />
             <Formulario/>
             <div className='fot'>
